@@ -1,0 +1,40 @@
+version: '2'
+services:
+  db_old:
+    image: postgres
+    ports:
+      - "9000:5432"
+
+  api_gateway:
+    build: ./piflab-store-api-go
+    image: zealotnt/piflab-store-api-go
+    command: bash api-go-entry.sh postgres
+    ports:
+      - "9900:80"
+    depends_on:
+      - db_old
+    links:
+      - db_old
+      - product_service
+    volumes:
+      - ./piflab-store-api-go:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
+    env_file: ./piflab-store-api-go/.env
+
+  db_product:
+    image: postgres
+    ports:
+      - "9001:5432"
+
+  product_service:
+    build: ./piflab-product-service-api
+    image: zealotnt/piflab-product-service-api
+    command: bash api-go-entry.sh postgres
+    ports:
+      - "9901:9901"
+    depends_on:
+      - db_product
+    links:
+      - db_product
+    volumes:
+      - ./piflab-product-service-api:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
+    env_file: ./piflab-product-service-api/.env
