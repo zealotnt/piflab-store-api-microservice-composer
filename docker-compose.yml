@@ -16,6 +16,7 @@ services:
     links:
       - db_old
       - products
+      - orders
     volumes:
       - ./piflab-store-api-go:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
     env_file: ./piflab-store-api-go/.env
@@ -27,7 +28,7 @@ services:
       - "9001:5432"
   products:
     build: ./piflab-products-service-api
-    image: zealotnt/piflab-store-api-go
+    image: zealotnt/piflab-products-service-api
     command: bash api-go-entry.sh postgres
     ports:
       - "9901:9901"
@@ -46,7 +47,7 @@ services:
       - "9002:5432"
   orders:
     build: ./piflab-orders-service-api
-    image: zealotnt/piflab-store-api-go
+    image: zealotnt/piflab-orders-service-api
     command: bash api-go-entry.sh postgres
     ports:
       - "9902:9902"
