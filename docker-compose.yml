@@ -1,20 +1,13 @@
 version: '2'
 services:
   # Gateway
-  db_old:
-    image: postgres
-    ports:
-      - "9000:5432"
   api:
     build: ./piflab-store-api-go
     image: zealotnt/piflab-store-api-go
     command: bash api-go-entry.sh postgres
     ports:
       - "9900:80"
-    depends_on:
-      - db_old
     links:
-      - db_old
       - products
       - orders
     volumes:
