@@ -1,0 +1,9 @@
+[submodule "piflab-orders-service-api"]
+	path = piflab-orders-service-api
+	url = git@github.com:zealotnt/piflab-store-orders-service-go.git
+[submodule "piflab-products-service-api"]
+	path = piflab-products-service-api
+	url = git@github.com:zealotnt/piflab-store-products-service-go.git
+[submodule "piflab-store-api-go"]
+	path = piflab-store-api-go
+	url = https://github.com/zealotnt/piflab-store-api-go.git
