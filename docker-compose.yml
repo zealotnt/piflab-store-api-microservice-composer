@@ -21,7 +21,7 @@ services:
       - "9001:5432"
   products:
     build: ./piflab-products-service-api
-    image: zealotnt/piflab-products-service-api
+    image: zealotnt/piflab-store-api-go
     command: bash api-go-entry.sh postgres
     ports:
       - "9901:9901"
@@ -40,7 +40,7 @@ services:
       - "9002:5432"
   orders:
     build: ./piflab-orders-service-api
-    image: zealotnt/piflab-orders-service-api
+    image: zealotnt/piflab-store-api-go
     command: bash api-go-entry.sh postgres
     ports:
       - "9902:9902"
@@ -59,7 +59,7 @@ services:
       - "9003:5432"
   carts:
     build: ./piflab-carts-service-api
-    image: zealotnt/piflab-carts-service-api
+    image: zealotnt/piflab-store-api-go
     command: bash api-go-entry.sh postgres
     ports:
       - "9903:9903"
@@ -68,5 +68,5 @@ services:
     links:
       - db_cart
     volumes:
-      - ./piflab-orders-service-api:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
+      - ./piflab-carts-service-api:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
     env_file: ./piflab-carts-service-api/.env
