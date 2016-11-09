@@ -51,3 +51,22 @@ services:
     volumes:
       - ./piflab-orders-service-api:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
     env_file: ./piflab-orders-service-api/.env
+
+  # Carts service
+  db_cart:
+    image: postgres
+    ports:
+      - "9003:5432"
+  carts:
+    build: ./piflab-carts-service-api
+    image: zealotnt/piflab-carts-service-api
+    command: bash api-go-entry.sh postgres
+    ports:
+      - "9903:9903"
+    depends_on:
+      - db_cart
+    links:
+      - db_cart
+    volumes:
+      - ./piflab-orders-service-api:/go/src/github.com/o0khoiclub0o/piflab-store-api-go
+    env_file: ./piflab-carts-service-api/.env
