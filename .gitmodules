@@ -7,3 +7,6 @@
 [submodule "piflab-store-api-go"]
 	path = piflab-store-api-go
 	url = https://github.com/zealotnt/piflab-store-api-go.git
+[submodule "piflab-carts-service-api"]
+	path = piflab-carts-service-api
+	url = git@github.com:zealotnt/piflab-store-carts-service-go.git

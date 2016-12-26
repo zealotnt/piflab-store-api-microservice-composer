@@ -1,0 +1,89 @@
+admin:
+  autoredeploy: true
+  environment:
+    - __API__=store-api.piflab.io
+    - __API_mock__=localhost
+  image: 'o0khoiclub0o/piflab-store-admin-js:dev'
+  ports:
+    - '80:80'
+api:
+  autoredeploy: true
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAJNLAZER4FCA65TWA
+    - AWS_SECRET_ACCESS_KEY=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
+    - 'CART_SERVICE_URL=http://carts:9903'
+    - 'ORDER_SERVICE_URL=http://orders:9902'
+    - 'PRODUCT_SERVICE_URL=http://products:9901'
+    - S3_BUCKET_NAME=piflab-store
+    - S3_REGION=ap-southeast-1
+  image: 'o0khoiclub0o/piflab-store-api-go:latest'
+  links:
+    - orders
+    - products
+  ports:
+    - '80:80'
+carts:
+  autoredeploy: true
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAIKCGLONYH2QY5BUA
+    - AWS_SECRET_ACCESS_KEY=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
+    - 'DATABASE_URL=postgres://postgres@db-cart:5432/postgres?sslmode=disable'
+    - 'ORDER_SERVICE_URL=http://orders:9902'
+    - PORT=9903
+    - 'PRODUCT_SERVICE_URL=http://products:9901'
+    - S3_BUCKET_NAME=piflab-store-mytest
+    - S3_REGION=ap-southeast-1
+  image: 'zealotnt/piflab-store-carts-service-go:latest'
+  links:
+    - db-cart
+  ports:
+    - '9903:9903'
+db-cart:
+  image: 'postgres:latest'
+  ports:
+    - '9003:5432'
+db-order:
+  image: 'postgres:latest'
+  ports:
+    - '9002:5432'
+db-product:
+  image: 'postgres:latest'
+  ports:
+    - '9001:5432'
+orders:
+  autoredeploy: true
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAJNLAZER4FCA65TWA
+    - AWS_SECRET_ACCESS_KEY=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
+    - 'DATABASE_URL=postgres://postgres@db-order:5432/postgres?sslmode=disable'
+    - PORT=9902
+    - 'PRODUCT_SERVICE_URL=http://products:9901'
+    - S3_BUCKET_NAME=piflab-store
+    - S3_REGION=ap-southeast-1
+  image: 'o0khoiclub0o/piflab-store-orders-service-go:latest'
+  links:
+    - db-order
+  ports:
+    - '9902:9902'
+products:
+  autoredeploy: true
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAJNLAZER4FCA65TWA
+    - AWS_SECRET_ACCESS_KEY=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
+    - 'DATABASE_URL=postgres://postgres@db-product:5432/postgres?sslmode=disable'
+    - PORT=9901
+    - S3_BUCKET_NAME=piflab-store
+    - S3_REGION=ap-southeast-1
+  image: 'o0khoiclub0o/piflab-store-products-service-go:latest'
+  links:
+    - db-product
+  ports:
+    - '9901:9901'
+web:
+  autoredeploy: true
+  environment:
+    - __API__=store-api.piflab.io
+    - __API_mock__=localhost
+  image: 'o0khoiclub0o/piflab-store-js:dev'
+  ports:
+    - '80:80'
