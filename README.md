@@ -18,3 +18,16 @@ sudo docker-compose run -p 9901:80 product_service bash
 ```bash
 source helper.sh
 ```
+
+
+- GetCart
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/396fb866-6723-4439-a072-8f1015af9951" id="e-BjnU.~0gYZ"></iframe></div>
+
+- UpdateCart
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/396fb866-6723-4439-a072-8f1015af9951" id="Z~BjlXV7VpB3"></iframe></div>
+
+- DeleteCart
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/396fb866-6723-4439-a072-8f1015af9951" id="jaCjyoVmxx_I"></iframe></div>
+
+- CheckoutCart
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/396fb866-6723-4439-a072-8f1015af9951" id="IaCjsXl_PoZ6"></iframe></div>
